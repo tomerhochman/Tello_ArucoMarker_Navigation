@@ -114,7 +114,9 @@ time.sleep(1)
 keep_recording = True
 
 # Logging
-f = open("/Users/tomerhochman/Desktop/Aruco.tmp/tello_aruco/logs/log_30.txt", "a")
+log_file_num = input("Please enter new number for log file:")
+video_file_num = input("Please enter new number for video file:")
+f = open(f"/Users/tomerhochman/Desktop/Aruco.tmp/tello_aruco/logs/log_{log_file_num}.txt", "a")
 
 # Tello initialization
 me = tello.Tello()
@@ -146,7 +148,7 @@ def video_record():
     resize = cv2.resize(frame_read.frame, (w, h))
 
     print('\x1b[1;30;41m' + "START RECORDING" + '\x1b[0m')
-    video = cv2.VideoWriter('/Users/tomerhochman/Desktop/Aruco.tmp/tello_aruco/tello_video_Gdrive/tello_vid_30.avi',
+    video = cv2.VideoWriter(f'/Users/tomerhochman/Desktop/Aruco.tmp/tello_aruco/tello_video_Gdrive/tello_vid_{video_file_num}.avi',
                             cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 15.0, (w, h))
 
     while keep_recording:
